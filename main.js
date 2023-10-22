@@ -1,24 +1,32 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import "./style.scss";
+import gsap from "gsap";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const sun = document.querySelector(".sun");
+const moon = document.querySelector(".moon");
+const circle = document.querySelector(".circle");
+const body = document.querySelector("body");
+const container = document.querySelector(".container");
+const content = document.querySelector(".content");
+const codebyln = document.querySelector(".codebyln");
 
-setupCounter(document.querySelector('#counter'))
+moon.addEventListener("click", () => {
+  gsap.to(body, { backgroundColor: "#111014" });
+  gsap.to(container, { borderColor: "#1e2027" });
+  gsap.to(content, { backgroundColor: "#1e2027" });
+  gsap.to(circle, { backgroundColor: "#511dbe", left: "75px" });
+  gsap.to(sun, { rotate: "45deg" });
+  gsap.to(".sun svg path", { fill: "#a5a4ab" });
+  gsap.to(".moon svg path", { fill: "#fff" });
+  gsap.to(codebyln, { color: "#511dbe" });
+});
+
+sun.addEventListener("click", () => {
+  gsap.to(body, { backgroundColor: "#dbd9dc" });
+  gsap.to(container, { borderColor: "#cbc9cc" });
+  gsap.to(content, { backgroundColor: "#e3e1e4" });
+  gsap.to(circle, { backgroundColor: "#f29f6b", left: "5px" });
+  gsap.to(sun, { rotate: "-45deg" });
+  gsap.to(".sun svg path", { fill: "rgba(255,255,255,1)" });
+  gsap.to(".moon svg path", { fill: "rgba(203,201,204,1)" });
+  gsap.to(codebyln, { color: "#f29f6b" });
+});
